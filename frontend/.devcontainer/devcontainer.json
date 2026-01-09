@@ -1,0 +1,21 @@
+{
+    "name": "Frontend React",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+    ],
+    "forwardPorts": [
+        5173
+    ],
+    "remoteUser": "node",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {}
+    }
+}

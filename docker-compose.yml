@@ -1,0 +1,26 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: .devcontainer/Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    # Keep it running
+    command: npm run dev -- --host
+
+  # This service runs the Supabase CLI, which in turn starts the actual Supabase containers (Postgres, Auth, etc.)
+  # on your Docker host. This fulfills the "service" requirement while maintaining the robust CLI workflow.
+  supabase:
+    image: node:20-slim
+    user: root
+    container_name: supabase_cli_runner
+    network_mode: host
+    volumes:
+      - .:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /app
+    # Use npx to run supabase CLI.
+    command: sh -c "npx supabase start && tail -f /dev/null"
