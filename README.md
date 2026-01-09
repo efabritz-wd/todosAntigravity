@@ -11,9 +11,15 @@ docker compose up
 ```
 
 This will:
-1. Start the **frontend** development server.
-2. Spin up a **local Supabase stack** (PostgreSQL, Auth, API, Studio).
+1. Start the **frontend** development server (with pre-configured local Supabase keys).
+2. Spin up a **local Supabase stack** (PostgreSQL, Auth, API, Studio) using the Supabase CLI.
 3. Initialize the database with required migrations.
+
+> [!TIP]
+> **No `.env` file required for Docker!** When using Docker Compose, the necessary environment variables (`VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`) are injected automatically.
+>
+> **When would you still want a `.env` file?**
+> You only need to copy `frontend/.env.example` to `frontend/.env` if you plan to run the frontend **locally without Docker** (e.g., by running `npm install` and `npm run dev` directly on your machine).
 
 ## 🔗 Service Links
 

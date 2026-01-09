@@ -33,6 +33,7 @@ dist-ssr/
 .env.production.local
 *.env
 *.env.local
+!.env.example
 
 # Supabase
 supabase/.temp/
