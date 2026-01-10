@@ -1,21 +1,18 @@
 {
-    "name": "Frontend React",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": ".."
-    },
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
-    },
-    "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
-    ],
-    "forwardPorts": [
-        5173
-    ],
+    "name": "Frontend Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
     "remoteUser": "node",
+    "workspaceFolder": "/workspaces/agTodoList/frontend",
     "features": {
-        "ghcr.io/devcontainers/features/git:1": {}
-    }
+        "ghcr.io/devcontainers/features/common-utils:1": {
+            "configureZshAsDefaultShell": true,
+            "upgradePackages": false
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "postCreateCommand": "sudo chown -R node:node /workspaces && npm install",
+    "forwardPorts": [
+        3000,
+        5173
+    ]
 }
